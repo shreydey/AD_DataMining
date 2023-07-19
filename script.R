@@ -36,4 +36,22 @@ data <- data %>%
     LDELTOTAL = as.numeric(LDELTOTAL)
   )
 
-# 3. 
+
+# 3. MODELING ----
+
+## Split data ----
+
+## Fit initial Random forest model ----
+
+## Tune model ----
+
+## Fit final model ----
+
+## Evaluate model performance (accuracy) ----
+
+# 4. FIGURES ----
+
+## Variable/Feature importance plot ----
+
+## Boxplot/Distribution of importance features, split by groups of positive/negative patients ----
+

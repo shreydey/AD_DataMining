@@ -1,13 +1,19 @@
+# 1. SETUP ----
 
+## set working directory ----
+setwd("/Users/shreyadey/Documents/GitHub/Mangobar_Research")
+
+## load libraries ----
 library(tidyverse)
-read_csv(AI)
 
-data <- read_csv(AI)
+# 2. DATA CLEANING ----
+## Read in data ----
+data <- read_csv("AI.csv")
 
-#Turning variables into factors
+## Changing variable types ----
 
-
-#Turning variables into numerics
+## Turning variables into factors
+##  Turning variables into numerics
 data <- data %>%
   mutate(
     APGEN1 = as.numeric(APGEN1),
@@ -29,3 +35,5 @@ data <- data %>%
     LIMMTOTAL = as.numeric(LIMMTOTAL),
     LDELTOTAL = as.numeric(LDELTOTAL)
   )
+
+# 3. 

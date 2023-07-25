@@ -1,2 +1,2 @@
 # Mangobar-Research
-Welcome to my hub! 
+A documentation of my process and interests in all things brain! 

@@ -130,6 +130,7 @@ saveRDS(rf_final_model, file = "rf_model.rds")
 ## Evaluate model performance (accuracy) ----
 
 # 4. PLOTTING ----
+
 rf_features <- as.data.frame(varImp(rf_final_model))
 ## Rename the column name to rf_imp
 colnames(rf_features) <- "rf_imp"
@@ -139,6 +140,7 @@ rf_features$feature <- rownames(rf_features)
 
 ## Selecting only relevant columns for mapping
 features <- rf_features %>% dplyr::select(c(feature, rf_imp))
+
 ## Determining and Plotting Best Features ----
 rf_features <- as.data.frame(varImp(rf_final_model))
 ## Rename the column name to rf_imp
@@ -150,7 +152,7 @@ rf_features$feature <- rownames(rf_features)
 ## Selecting only relevant columns for mapping
 features <- rf_features %>% dplyr::select(c(feature, rf_imp))
 
-### Plot the feature importance
+### Basic Plot of the feature importance
 plot <- features %>%
   ggplot(aes(x =  rf_imp, y = feature , color = "#2E86AB")) +
   # Creates a point for the feature importance
@@ -190,3 +192,13 @@ ggplot(data, aes(x = as.factor(DXAD), y = as.numeric(MMSCORE))) +
        y = "MMSCORE") +
   theme_linedraw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+## Testing Correlations Between Features ----
+correlation_matrix <- cor(data$MMSCORE, data$LIMMTOTAL)
+
+ggplot(data, aes(x = MMSCORE, y = LIMMTOTAL)) +
+  geom_point() +
+  labs(title = "Correlation between MMSCORE and LIMMTOTAL",
+       x = "MMSCORE",
+       y = "LIMMTOTAL") +
+  theme_minimal() + geom_smooth()

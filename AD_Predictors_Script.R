@@ -193,6 +193,30 @@ ggplot(data, aes(x = as.factor(DXAD), y = as.numeric(MMSCORE))) +
   theme_linedraw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
+# Boxplot
+ggplot(data, aes(fill = as.factor(DXAD),  x = as.numeric(MMSCORE))) +
+  geom_density(alpha = 0.5) +  # Use geom_density() for density plot instead of boxplot
+  labs(title = "Distribution of MMSCORE by Alzheimer's Disease status",
+       x = "DXAD",
+       y = "MMSCORE") +
+  theme_linedraw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+
+# Distribution Graph
+ggplot(data, aes(fill = as.factor(DXAD), x = as.numeric(MMSCORE))) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Distribution of MMSCORE by Alzheimer's Disease status",
+       x = "Alzheimer's Diagnosis",
+       y = "MMSCORE",
+       fill = "AD Status") +
+  theme_minimal() +
+  scale_fill_manual(name = "AD Status",  # Specify the desired name for the legend
+                    values = c("lightblue", "red"),  # Specify colors for each level of the factor
+                    labels = c("Does not have AD", "Has AD")) +  # Specify the desired color names
+  theme(legend.position = "top",  # Set the legend position to 'bottom'
+        legend.justification = "center",  # Center the legend inside the plot area
+        legend.box = "horizontal")  # Display the legend in a horizontal layout
+
 ## Testing Correlations Between Features ----
 correlation_matrix <- cor(data$MMSCORE, data$LIMMTOTAL)
 
